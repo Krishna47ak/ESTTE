@@ -5,8 +5,9 @@ import { HiLocationMarker } from 'react-icons/hi'
 import Header from '../components/Header'
 import Property from '../components/Property'
 import InquiryCard from '../components/InquiryCard'
+import ReviewCard from '../components/ReviewCard'
 
-const ServicingAreas = ["Noida Sector 57", "Noida Sector 100", "Golf Course", "Noida Electronic City", "Botanical Garden", "Noida Extension", "Noida Sector 74", "Indraprastha", "New Ashok Nagar", "Vrindavan Colony"];  
+const ServicingAreas = ["Noida Sector 57", "Noida Sector 100", "Golf Course", "Noida Electronic City", "Botanical Garden", "Noida Extension", "Noida Sector 74", "Indraprastha", "New Ashok Nagar", "Vrindavan Colony"];
 
 const Home = () => {
   return (
@@ -81,6 +82,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
+
             <div className='border border-[#C0C0C0] pt-5 px-5 rounded-xl w-full overflow-hidden mt-5' >
               <div className='flex items-center justify-between' >
                 <p className='text-2xl font-semibold mb-3' >Services</p>
@@ -113,8 +115,10 @@ const Home = () => {
           </div>
 
         </div>
+
         <Property title={"Properties for sale"} rent={false} />
         <Property title={"Properties for rent"} rent={true} />
+
         <div className='mt-10' >
           <div className='flex items-center justify-between mb-3' >
             <p className='text-2xl font-semibold mb-3' >My inquiries</p>
@@ -124,6 +128,18 @@ const Home = () => {
             <InquiryCard />
             <InquiryCard />
             <InquiryCard />
+          </div>
+        </div>
+
+        <div className='mt-10' >
+          <div className='flex items-center justify-between mb-3' >
+            <p className='text-2xl font-semibold mb-3' >Ratings & Reviews</p>
+            <p className='font-semibold text-[#E36957] text-lg cursor-pointer' >view all</p>
+          </div>
+          <ReviewCard />
+          <ReviewCard />
+          <div className='text-[#E36957] text-center w-52 text-sm font-bold border-2 border-[#E36957] px-8 py-3 rounded-lg cursor-pointer hover:text-white hover:bg-[#E36957] mt-10  mx-auto' >
+            <p>VIEW ALL REVIEWS</p>
           </div>
         </div>
       </div>

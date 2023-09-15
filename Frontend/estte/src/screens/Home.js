@@ -3,6 +3,7 @@ import { BsThreeDots } from 'react-icons/bs'
 import { BiPlus, BiSolidStar } from 'react-icons/bi'
 import { HiLocationMarker } from 'react-icons/hi'
 import Header from '../components/Header'
+import Property from '../components/Property'
 
 const ServicingAreas = ["Noida Sector 57", "Noida Sector 100", "Golf Course", "Noida Electronic City", "Botanical Garden", "Noida Extension", "Noida Sector 74", "Indraprastha", "New Ashok Nagar", "Vrindavan Colony"];  
 
@@ -111,6 +112,8 @@ const Home = () => {
           </div>
 
         </div>
+        <Property title={"Properties for sale"} rent={false} />
+        <Property title={"Properties for rent"} rent={true} />
       </div>
     </div>
   )

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 const Header = () => {
     return (
-        <div className='flex justify-between py-2 px-10 shadow-xl items-center' >
+        <div className='flex justify-between py-2 px-10 shadow-lg items-center' >
             <p className='text-2xl' >ESTTE</p>
             <div className='flex space-x-4 items-center' >
                 <div className='flex items-center' >
@@ -33,7 +33,7 @@ const Header = () => {
                     <p>SIGN UP</p>
                 </Link>
                 <div>
-                    <img className='h-4 cursor-pointer hover:scale-105' src={require("../assets/images/HamburgerIcon.png")} />
+                    <img className='h-4 cursor-pointer hover:scale-105' src={require("../assets/images/hamburgerIcon.png")} />
                 </div>
             </div>
         </div>

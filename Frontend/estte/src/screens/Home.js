@@ -4,6 +4,7 @@ import { BiPlus, BiSolidStar } from 'react-icons/bi'
 import { HiLocationMarker } from 'react-icons/hi'
 import Header from '../components/Header'
 import Property from '../components/Property'
+import InquiryCard from '../components/InquiryCard'
 
 const ServicingAreas = ["Noida Sector 57", "Noida Sector 100", "Golf Course", "Noida Electronic City", "Botanical Garden", "Noida Extension", "Noida Sector 74", "Indraprastha", "New Ashok Nagar", "Vrindavan Colony"];  
 
@@ -114,6 +115,17 @@ const Home = () => {
         </div>
         <Property title={"Properties for sale"} rent={false} />
         <Property title={"Properties for rent"} rent={true} />
+        <div className='mt-10' >
+          <div className='flex items-center justify-between mb-3' >
+            <p className='text-2xl font-semibold mb-3' >My inquiries</p>
+            <p className='font-semibold text-[#E36957] text-lg cursor-pointer' >view all</p>
+          </div>
+          <div className='flex flex-wrap justify-between' >
+            <InquiryCard />
+            <InquiryCard />
+            <InquiryCard />
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -9,7 +9,7 @@ const PropertyCard = ({ rent }) => {
                 <div className='absolute bg-white p-2 rounded-full right-4 top-4 cursor-pointer' >
                     <img className='h-3' src={require("../assets/images/pin.png")} />
                 </div>
-                <img className='w-full' src={require("../assets/images/properties.png")} />
+                <img className='w-full h-[195px]' src={require("../assets/images/property.png")} />
             </div>
             <div className='px-5' >
                 <p className='font-bold my-3' >3C Lotus Boulevard Appartments</p>

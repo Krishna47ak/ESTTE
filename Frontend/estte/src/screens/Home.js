@@ -6,6 +6,7 @@ import Header from '../components/Header'
 import Property from '../components/Property'
 import InquiryCard from '../components/InquiryCard'
 import ReviewCard from '../components/ReviewCard'
+import Footer from '../components/Footer'
 
 const ServicingAreas = ["Noida Sector 57", "Noida Sector 100", "Golf Course", "Noida Electronic City", "Botanical Garden", "Noida Extension", "Noida Sector 74", "Indraprastha", "New Ashok Nagar", "Vrindavan Colony"];
 
@@ -138,7 +139,7 @@ const Home = () => {
           </div>
           <div className='flex justify-end space-x-5' >
             <div className='relative' >
-              <div  className='absolute text-xs left-3 top-4' >Filter by:</div>
+              <div className='absolute text-xs left-3 top-4' >Filter by:</div>
               <select className="border border-[#C0C0C0] rounded-lg py-3 outline-none font-bold text-sm pl-14 px-10 " >
                 <option value="ALL" >All</option>
                 <option value="HIGH" >High</option>
@@ -146,7 +147,7 @@ const Home = () => {
               </select>
             </div>
             <div className='relative' >
-              <div  className='absolute text-xs left-3 top-4' >Sorted by:</div>
+              <div className='absolute text-xs left-3 top-4' >Sorted by:</div>
               <select className="border border-[#C0C0C0] rounded-lg py-3 outline-none font-bold text-sm pl-16 px-8" >
                 <option value="ALL" >All</option>
                 <option value="NEW" selected>Newest</option>
@@ -162,7 +163,9 @@ const Home = () => {
           </div>
         </div>
 
+
       </div>
+      <Footer />
     </div>
   )
 }

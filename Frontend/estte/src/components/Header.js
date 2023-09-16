@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 const Header = () => {
     return (
-        <div className='flex justify-between py-2 px-10 shadow-lg items-center' >
+        <div className='flex justify-between py-2 px-10 shadow-lg items-center select-none' >
             <p className='text-2xl' >ESTTE</p>
             <div className='flex space-x-4 items-center' >
                 <div className='flex items-center' >

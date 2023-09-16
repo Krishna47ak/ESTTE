@@ -136,12 +136,32 @@ const Home = () => {
             <p className='text-2xl font-semibold mb-3' >Ratings & Reviews</p>
             <p className='font-semibold text-[#E36957] text-lg cursor-pointer' >view all</p>
           </div>
+          <div className='flex justify-end space-x-5' >
+            <div className='relative' >
+              <div  className='absolute text-xs left-3 top-4' >Filter by:</div>
+              <select className="border border-[#C0C0C0] rounded-lg py-3 outline-none font-bold text-sm pl-14 px-10 " >
+                <option value="ALL" >All</option>
+                <option value="HIGH" >High</option>
+                <option value="LOW" >Low</option>
+              </select>
+            </div>
+            <div className='relative' >
+              <div  className='absolute text-xs left-3 top-4' >Sorted by:</div>
+              <select className="border border-[#C0C0C0] rounded-lg py-3 outline-none font-bold text-sm pl-16 px-8" >
+                <option value="ALL" >All</option>
+                <option value="NEW" selected>Newest</option>
+                <option value="OLD" >Oldest</option>
+              </select>
+            </div>
+
+          </div>
           <ReviewCard />
           <ReviewCard />
           <div className='text-[#E36957] text-center w-52 text-sm font-bold border-2 border-[#E36957] px-8 py-3 rounded-lg cursor-pointer hover:text-white hover:bg-[#E36957] mt-10  mx-auto' >
             <p>VIEW ALL REVIEWS</p>
           </div>
         </div>
+
       </div>
     </div>
   )

@@ -6,7 +6,7 @@ const ReviewCard = () => {
         <div>
             <div className='bg-[#C0C0C0] h-[0.05rem] w-full my-6 mb-8' />
             <div className='flex items-center justify-between mb-3' >
-                <div className='flex space-x-10' >
+                <div className='flex items-center space-x-10' >
                     <p className='font-semibold text-xl' >Highly likely to recommend</p>
                     <div className='flex items-start text-[#5CA500] font-bold' >
                         <BiSolidStar className='mr-2 mt-1' />

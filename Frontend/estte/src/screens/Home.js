@@ -2,12 +2,17 @@ import React from 'react'
 import { BsThreeDots, BsArrowUpRight } from 'react-icons/bs'
 import { BiPlus, BiSolidStar } from 'react-icons/bi'
 import { HiLocationMarker } from 'react-icons/hi'
+import buyerImg from '../assets/images/buyer.png'
+import listingImg from '../assets/images/listing.png'
+import relocationImg from '../assets/images/relocation.png'
+import appraisalImg from '../assets/images/appraisal.png'
 import Header from '../components/Header'
 import Property from '../components/Property'
 import InquiryCard from '../components/InquiryCard'
 import ReviewCard from '../components/ReviewCard'
 import Footer from '../components/Footer'
 import MemberCard from '../components/MemberCard'
+import ServiceCard from '../components/ServiceCard'
 
 const ServicingAreas = ["Noida Sector 57", "Noida Sector 100", "Golf Course", "Noida Electronic City", "Botanical Garden", "Noida Extension", "Noida Sector 74", "Indraprastha", "New Ashok Nagar", "Vrindavan Colony"];
 
@@ -112,17 +117,54 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className=' w-[38rem]' >
+          <div className=' w-[44rem]' >
 
             <div className='border border-[#C0C0C0] p-5 rounded-lg' >
               <div className='flex items-center justify-between mb-5' >
                 <p className='text-2xl font-semibold' >Our Team Members</p>
-                <p className='font-semibold text-[#E36957] text-lg cursor-pointer' >view all</p>
+                <p className='font-semibold text-[#E36957] text-lg w-20 xl:w-fit cursor-pointer' >view all</p>
               </div>
               {Array(5).fill("").map((e, index) => <MemberCard key={index} />)}
             </div>
 
-            
+            <div className='border border-[#C0C0C0] p-5 rounded-lg mt-5' >
+              <p className='text-2xl font-semibold' >Services</p>
+              <div className='flex flex-wrap justify-between mt-5' >
+                <ServiceCard img={buyerImg} title="Buyer's agent" />
+                <ServiceCard img={listingImg} title="Listing agent" />
+                <ServiceCard img={relocationImg} title="Relocation" />
+                <ServiceCard img={appraisalImg} title="Appraisal" />
+              </div>
+              <div>
+                <p className='text-2xl font-semibold mb-5' >Location</p>
+                <div className='flex space-x-2 items-center' >
+                  <HiLocationMarker className='text-[#340E62]' />
+                  <p>Mumbai, Maharashtra, India</p>
+                </div>
+              </div>
+              <div>
+                <p className='text-2xl font-semibold my-5' >Email</p>
+                <div className='flex space-x-2 items-center' >
+                  <img src={require("../assets/images/email.png")} className='h-3' />
+                  <p>ownerprop@gmail.com</p>
+                  <BsArrowUpRight className='text-sm' />
+                </div>
+              </div>
+              <div>
+                <p className='text-2xl font-semibold my-5' >Website</p>
+                <div className='flex space-x-2 items-center' >
+                  <img src={require("../assets/images/website.png")} className='h-3' />
+                  <p>www.myproperty.com</p>
+                  <BsArrowUpRight className='text-sm' />
+                </div>
+              </div>
+              <div className='text-[#E36957] my-5 mt-[1.9rem] text-center text-sm font-bold border-2 border-[#E36957] px-8 py-3 rounded-lg cursor-pointer hover:text-white hover:bg-[#E36957]' >
+                <p>Add to contacts</p>
+              </div>
+              <div className='bg-[#E36957] mb-2 justify-center text-white text-sm font-semibold px-8 py-3 rounded-lg flex items-center cursor-pointer hover:bg-orange-700' >
+                <p>Message</p>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -130,7 +172,7 @@ const Home = () => {
         <Property title={"Properties for sale"} rent={false} />
         <Property title={"Properties for rent"} rent={true} />
 
-        <div className='mt-10' >
+        <div className='mt-5' >
           <div className='flex items-center justify-between mb-3' >
             <p className='text-2xl font-semibold mb-3' >My inquiries</p>
             <p className='font-semibold text-[#E36957] text-lg cursor-pointer' >view all</p>
@@ -142,7 +184,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className='mt-10' >
+        <div className='mt-5' >
           <div className='flex items-center justify-between mb-3' >
             <p className='text-2xl font-semibold mb-3' >Ratings & Reviews</p>
             <p className='font-semibold text-[#E36957] text-lg cursor-pointer' >view all</p>

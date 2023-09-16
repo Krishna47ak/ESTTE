@@ -2,7 +2,7 @@ import React from 'react'
 
 const PropertyCard = ({ rent }) => {
     return (
-        <div className='w-80 rounded-lg border border-[#C0C0C0] hover:border-[#340E62] hover:shadow-xl overflow-hidden' >
+        <div className='w-80 mb-5 rounded-lg border border-[#C0C0C0] hover:border-[#340E62] hover:shadow-xl overflow-hidden' >
             <div className='relative' >
                 <label className='absolute text-white font-semibold text-sm bg-[#E36957] px-7 py-2' >{rent ? "RENT" : "SALE"}</label>
                 <label className='absolute right-4 bottom-4 text-black font-medium text-xs bg-white rounded-lg px-2 py-1' >5Days ago</label>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { BsThreeDots } from 'react-icons/bs'
+import { BsThreeDots, BsArrowUpRight } from 'react-icons/bs'
 import { BiPlus, BiSolidStar } from 'react-icons/bi'
 import { HiLocationMarker } from 'react-icons/hi'
 import Header from '../components/Header'
@@ -7,6 +7,7 @@ import Property from '../components/Property'
 import InquiryCard from '../components/InquiryCard'
 import ReviewCard from '../components/ReviewCard'
 import Footer from '../components/Footer'
+import MemberCard from '../components/MemberCard'
 
 const ServicingAreas = ["Noida Sector 57", "Noida Sector 100", "Golf Course", "Noida Electronic City", "Botanical Garden", "Noida Extension", "Noida Sector 74", "Indraprastha", "New Ashok Nagar", "Vrindavan Colony"];
 
@@ -111,8 +112,17 @@ const Home = () => {
               </div>
             </div>
           </div>
+          <div className=' w-[38rem]' >
 
-          <div className='border border-[#C0C0C0] h-20 rounded-lg w-[38rem]' >
+            <div className='border border-[#C0C0C0] p-5 rounded-lg' >
+              <div className='flex items-center justify-between mb-5' >
+                <p className='text-2xl font-semibold' >Our Team Members</p>
+                <p className='font-semibold text-[#E36957] text-lg cursor-pointer' >view all</p>
+              </div>
+              {Array(5).fill("").map((e, index) => <MemberCard key={index} />)}
+            </div>
+
+            
           </div>
 
         </div>
@@ -138,7 +148,7 @@ const Home = () => {
             <p className='font-semibold text-[#E36957] text-lg cursor-pointer' >view all</p>
           </div>
           <div className='flex justify-end space-x-5' >
-            <div className='relative' >
+            <div className='relative select-none' >
               <div className='absolute text-xs left-3 top-4' >Filter by:</div>
               <select className="border border-[#C0C0C0] rounded-lg py-3 outline-none font-bold text-sm pl-14 px-10 " >
                 <option value="ALL" >All</option>
@@ -146,7 +156,7 @@ const Home = () => {
                 <option value="LOW" >Low</option>
               </select>
             </div>
-            <div className='relative' >
+            <div className='relative select-none' >
               <div className='absolute text-xs left-3 top-4' >Sorted by:</div>
               <select className="border border-[#C0C0C0] rounded-lg py-3 outline-none font-bold text-sm pl-16 px-8" >
                 <option value="ALL" >All</option>

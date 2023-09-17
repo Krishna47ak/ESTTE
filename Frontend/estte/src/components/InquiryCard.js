@@ -1,14 +1,14 @@
 import { BiSolidStar } from 'react-icons/bi'
 
-const InquiryCard = () => {
+const InquiryCard = ({ data }) => {
     return (
         <div className='w-[28rem] rounded-lg mb-5 border border-[#C0C0C0] p-5 hover:shadow-xl overflow-hidden' >
             <div className='flex justify-between' >
                 <div className='flex items-center' >
                     <img className='h-14 mr-3' src={require("../assets/images/profileIcon.png")} />
                     <div>
-                        <p className='text-lg font-semibold' >Mr. XYZ</p>
-                        <p className='text-[#E36957]' >+91 9988786791</p>
+                        <p className='text-lg font-semibold' >Mr. {data?.name}</p>
+                        <p className='text-[#E36957]' >+91 {data?.mobile}</p>
                     </div>
                 </div>
                 <div className='flex items-start text-[#5CA500] font-semibold' >

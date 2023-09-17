@@ -1,9 +1,14 @@
 import { useState, useRef } from "react"
 import { BiSolidPencil } from "react-icons/bi";
 import PropertyImg from "../assets/images/property.png";
+import { useDispatch } from "react-redux";
+import { listProperty } from "../store/actions/property";
+import { useNavigate } from "react-router-dom";
 
 const ListProperty = () => {
     const inputRef = useRef("");
+    const history = useNavigate()
+    const dispatch = useDispatch();
 
     const [errorImg, setErrorImg] = useState(false);
     const [formData, setFormData] = useState({
@@ -13,7 +18,7 @@ const ListProperty = () => {
         category: '',
         bedrooms: '',
         bathrooms: ''
-    })
+    });
 
     const handleImageChange = (e) => {
         var reader = new FileReader();
@@ -36,7 +41,7 @@ const ListProperty = () => {
         e.preventDefault()
         img?.length == 0 ? setErrorImg(true) : setErrorImg(false)
 
-        console.log(formData);
+        if (!errorImg) dispatch(listProperty(formData, history))
     }
 
     return (

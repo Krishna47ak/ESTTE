@@ -181,8 +181,8 @@ const Home = () => {
 
       </div>
 
-      <Property title={"Properties for sale"} rent={false} />
-      <Property title={"Properties for rent"} rent={true} />
+      <Property data={sale} title={"Properties for sale"} />
+      <Property data={rent} title={"Properties for rent"} />
 
       <div className='mt-5' >
         <div className='flex items-center justify-between mb-3' >
@@ -190,9 +190,9 @@ const Home = () => {
           <p className='font-semibold text-[#E36957] text-lg cursor-pointer' >view all</p>
         </div>
         <div className='flex flex-wrap justify-between' >
-          <InquiryCard />
-          <InquiryCard />
-          <InquiryCard />
+          <InquiryCard data={user} />
+          <InquiryCard data={user} />
+          <InquiryCard data={user} />
         </div>
       </div>
 
@@ -220,8 +220,8 @@ const Home = () => {
           </div>
 
         </div>
-        <ReviewCard />
-        <ReviewCard />
+        <ReviewCard data={user} />
+        <ReviewCard data={user} />
         <div className='text-[#E36957] text-center w-52 text-sm font-bold border-2 border-[#E36957] px-8 py-3 rounded-lg cursor-pointer hover:text-white hover:bg-[#E36957] mt-10  mx-auto' >
           <p>VIEW ALL REVIEWS</p>
         </div>

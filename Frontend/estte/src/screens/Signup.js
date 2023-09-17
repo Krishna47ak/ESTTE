@@ -54,7 +54,6 @@ const SignUp = () => {
       console.error("Please check you inputs");
     } else {
       setLoading(true)
-      console.log(formData);
       dispatch(signup(formData, history))
     }
   }

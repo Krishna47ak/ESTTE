@@ -1,7 +1,7 @@
 import Rating from "./Rating"
 import { BiSolidStar } from 'react-icons/bi'
 
-const ReviewCard = () => {
+const ReviewCard = ({ data }) => {
     return (
         <div>
             <div className='bg-[#C0C0C0] h-[0.05rem] w-full my-6 mb-8' />
@@ -18,8 +18,8 @@ const ReviewCard = () => {
             <div className='flex items-center my-7' >
                 <img className='h-14 mr-3' src={require("../assets/images/profileIcon.png")} />
                 <div>
-                    <p className='text-lg font-semibold' >Mr. XYZ</p>
-                    <p className='text-[#E36957]' >+91 9988786791</p>
+                    <p className='text-lg font-semibold' >Mr. {data?.name}</p>
+                    <p className='text-[#E36957]' >+91 {data?.mobile}</p>
                 </div>
             </div>
             <p className='mb-5' >Sold a Multiple Occupancy home in 2023 in Ridgewood, Ridgewood, NY.</p>

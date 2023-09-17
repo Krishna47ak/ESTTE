@@ -30,6 +30,7 @@ const ListProperty = () => {
         reader.readAsDataURL(e.target.files[0]);
         reader.onload = () => {
             setFormData({ ...formData, img: reader.result });
+            setErrorImg(false);
         };
     };
 
@@ -43,10 +44,13 @@ const ListProperty = () => {
 
     const onSubmit = e => {
         e.preventDefault()
-        img?.length === 0 ? setErrorImg(true) : setErrorImg(false)
 
-        if (!errorImg) return dispatch(listProperty(formData, history))
-        setLoading(true)
+        if (img?.length === 0) {
+            setErrorImg(true)
+        } else {
+            dispatch(listProperty(formData, history))
+            setLoading(true)
+        }
     }
 
     if (!isAuthenticated) return <Navigate to="/" />

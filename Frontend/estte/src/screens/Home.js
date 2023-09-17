@@ -11,6 +11,7 @@ import InquiryCard from '../components/InquiryCard'
 import ReviewCard from '../components/ReviewCard'
 import MemberCard from '../components/MemberCard'
 import ServiceCard from '../components/ServiceCard'
+import Spinner from '../components/Spinner'
 import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 
@@ -26,7 +27,7 @@ const Home = () => {
 
   if (!auth.isAuthenticated) return <Navigate to="/signup" />
 
-  return (
+  return !user || auth?.loading ? <Spinner /> : (
     <div className='p-10' >
       <div className='flex space-x-5 ' >
         <div>

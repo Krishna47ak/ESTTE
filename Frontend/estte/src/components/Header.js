@@ -29,7 +29,7 @@ const Header = () => {
                 <Link className='bg-[#340E62] text-white text-sm font-semibold px-6 py-2 rounded-lg hover:scale-105' >
                     <p>JOIN</p>
                 </Link>
-                <Link className='bg-[#340E62] text-white text-sm font-semibold px-6 py-2 rounded-lg hover:scale-105' >
+                <Link to="/signup" className='bg-[#340E62] text-white text-sm font-semibold px-6 py-2 rounded-lg hover:scale-105' >
                     <p>SIGN UP</p>
                 </Link>
                 <div>

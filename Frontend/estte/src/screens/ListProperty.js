@@ -42,9 +42,9 @@ const ListProperty = () => {
     return (
         <section className="flex flex-col  items-center p-5 min-h-screen ">
             <p className="text-black text-xl">
-                <i className="fas fa-user "></i> List Your Property
+                List Your Property
             </p>
-            <form className='flex flex-col gap-6 mt-2 border border-[#C0C0C0] bg-gray-300 shadow-xl rounded-xl p-10' onSubmit={onSubmit} >
+            <form className='flex flex-col gap-6 mt-5 border border-[#C0C0C0] bg-gray-300 shadow-xl rounded-xl p-10' onSubmit={onSubmit} >
                 <div className="relative w-48 mx-auto" onClick={handleImageClick}>
                     <img
                         src={img ? img : PropertyImg}
@@ -71,15 +71,15 @@ const ListProperty = () => {
                     </select>
                 </div>
                 <div>
-                    <input name='name' value={name} onChange={onChange} type="text" placeholder='Name of the property' className='bg-white pr-5 pl-5 py-2 rounded-lg mr-3' required></input>
-                    <input name='price' value={price} onChange={onChange} type="number" placeholder='Price of the property' className='bg-white pr-5 pl-5 py-2 rounded-lg' required></input>
+                    <input name='name' value={name} onChange={onChange} type="text" placeholder='Name of the property' className='bg-white pr-5 pl-5 py-2 rounded-lg mr-3' required />
+                    <input name='price' value={price} onChange={onChange} type="number" placeholder='Price of the property' className='bg-white pr-5 pl-5 py-2 rounded-lg' required />
                 </div>
 
                 <div>
-                    <input name='bedrooms' value={bedrooms} onChange={onChange} type="number" placeholder='No. of bedrooms' className='bg-white pr-5 pl-5 py-2 rounded-lg mr-3' required></input>
-                    <input name='bathrooms' value={bathrooms} onChange={onChange} type="number" placeholder='No. of bathrooms' className='bg-white pr-5 pl-5 py-2 rounded-lg mr-3' required></input>
+                    <input name='bedrooms' value={bedrooms} onChange={onChange} type="number" placeholder='No. of bedrooms' className='bg-white pr-5 pl-5 py-2 rounded-lg mr-3' required />
+                    <input name='bathrooms' value={bathrooms} onChange={onChange} type="number" placeholder='No. of bathrooms' className='bg-white pr-5 pl-5 py-2 rounded-lg mr-3' required />
                 </div>
-                <input type='submit' className='btn btn-primary bg-[#340E62] text-white py-2 mt-5 rounded-lg'></input>
+                <input type='submit' className='btn btn-primary bg-[#340E62] text-white py-2 mt-5 rounded-lg active:scale-95 duration-500' />
             </form>
         </section>
     )

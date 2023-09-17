@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./screens/Home";
 import ListProperty from "./screens/ListProperty";
 import AppLayout from "./components/AppLayout";
+import SignUp from "./screens/Signup";
 
 const appRouter = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/list-property",
         element: <ListProperty />
+      },
+      {
+        path: "/signup",
+        element: <SignUp />
       },
     ]
   }

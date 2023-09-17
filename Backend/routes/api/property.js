@@ -35,10 +35,10 @@ router.post('/', auth, [
             bathrooms
         }
 
-        user.property.unshift(newProperty)
+        user.properties.unshift(newProperty)
 
         await user.save()
-        res.json(user.property)
+        res.json(user.properties)
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error')

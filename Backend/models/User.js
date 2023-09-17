@@ -26,6 +26,10 @@ const UserSchema = new mongoose.Schema({
         unique: true,
         required: true
     },
+    designation: {
+        type: String,
+        required: true
+    },
     expertise: {
         type: String,
         required: true
@@ -35,10 +39,10 @@ const UserSchema = new mongoose.Schema({
         required: true
     },
     address: {
-        type: [String],
+        type: String,
         required: true
     },
-    property: [
+    properties: [
         {
             img: {
                 type: String

@@ -1,10 +1,14 @@
 import React, { useState, useRef } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { BiSolidPencil } from "react-icons/bi";
 import ProfileImg from "../assets/images/profileDefaultIcon.jpg";
+import { signup } from '../store/actions/auth';
 
-const SignUp = ({ isAuthenticated, signup }) => {
+const SignUp = () => {
   const history = useNavigate()
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
 
   const inputRef = useRef("");
   const [loading, setLoading] = useState(false)
@@ -17,6 +21,7 @@ const SignUp = ({ isAuthenticated, signup }) => {
     mobile: '',
     website: '',
     status: '',
+    designation: '',
     address: [],
     expertise: '',
     description: '',
@@ -24,7 +29,7 @@ const SignUp = ({ isAuthenticated, signup }) => {
     password2: ''
   })
 
-  const { img, name, email, mobile, website, status, address, expertise, description, password, password2 } = formData
+  const { img, name, email, mobile, website, status, designation, address, expertise, description, password, password2 } = formData
 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
@@ -50,12 +55,12 @@ const SignUp = ({ isAuthenticated, signup }) => {
     } else {
       setLoading(true)
       console.log(formData);
+      dispatch(signup(formData, history))
     }
   }
 
-  // if (isAuthenticated) {
-  //   return <Navigate to="/" />
-  // }
+  if (isAuthenticated) return <Navigate to="/" />
+
 
   return (
     <section className="flex flex-col p-10 items-center min-h-screen">
@@ -90,24 +95,25 @@ const SignUp = ({ isAuthenticated, signup }) => {
           </select>
         </div>
         <div>
-          <input name='name' value={name} onChange={onChange} type="text" placeholder='Full Name' className='pr-5 pl-5 py-2 rounded-2xl mr-3' required/>
-          <input name='mobile' value={mobile} onChange={onChange} type="number" placeholder='Mobile Number' className='pr-5 pl-5 py-2 rounded-2xl' required/>
+          <input name='name' value={name} onChange={onChange} type="text" placeholder='Full Name' className='pr-5 pl-5 py-2 rounded-2xl mr-3' required />
+          <input name='mobile' value={mobile} onChange={onChange} type="number" placeholder='Mobile Number' className='pr-5 pl-5 py-2 rounded-2xl' required />
         </div>
 
         <div>
-          <input name='email' value={email} onChange={onChange} type="email" placeholder='Email' className='pr-5 pl-5 py-2 rounded-2xl mr-3' required/>
-          <input name='expertise' value={expertise} onChange={onChange} type="text" placeholder='Expertise' className='pr-5 pl-5 py-2 rounded-2xl' required/>
+          <input name='designation' value={designation} onChange={onChange} type="text" placeholder='Designation' className='pr-5 pl-5 py-2 rounded-2xl mr-3' required />
+          <input name='expertise' value={expertise} onChange={onChange} type="text" placeholder='Expertise' className='pr-5 pl-5 py-2 rounded-2xl' required />
         </div>
-        <input name='website' value={website} onChange={onChange} type="text" placeholder='Website' className='pr-5 pl-5 py-2 rounded-2xl' required/>
-        <input name='address' value={address} onChange={onChange} type="text" placeholder='Address' className='pr-5 pl-5 py-2 rounded-2xl' required/>
+        <input name='email' value={email} onChange={onChange} type="email" placeholder='Email' className='pr-5 pl-5 py-2 rounded-2xl' required />
+        <input name='website' value={website} onChange={onChange} type="text" placeholder='Website' className='pr-5 pl-5 py-2 rounded-2xl' required />
+        <input name='address' value={address} onChange={onChange} type="text" placeholder='Address' className='pr-5 pl-5 py-2 rounded-2xl' required />
         <textarea name='description' value={description} onChange={onChange} type="text" placeholder='About' className='pr-5 pl-5 py-2 rounded-2xl' required></textarea>
-        <input name='password' value={password} onChange={onChange} type="password" placeholder='Password' className='pr-5 pl-5 py-2 rounded-2xl' required minLength={8}/>
+        <input name='password' value={password} onChange={onChange} type="password" placeholder='Password' className='pr-5 pl-5 py-2 rounded-2xl' required minLength={8} />
         <div className='flex flex-col space-y-1' >
-          <input name='password2' value={password2} onChange={onChange} type="password" placeholder='Confirm Password' className='pr-5 pl-5 py-2 rounded-2xl' required/>
+          <input name='password2' value={password2} onChange={onChange} type="password" placeholder='Confirm Password' className='pr-5 pl-5 py-2 rounded-2xl' required />
           {errorPassword && <span className='ml-1 text-xs text-red-600 font-semibold' >Password do not match</span>}
         </div>
         <p className='text-gray-700'>Already a member?<span><Link className='text-blue-400' to="/signin"> Login</Link></span></p>
-        <input type='submit' className='btn btn-primary bg-[#340E62] text-white py-2 mt-5 rounded-lg active:scale-95 duration-500'/>
+        <input type='submit' className='btn btn-primary bg-[#340E62] text-white py-2 mt-5 rounded-lg active:scale-95 duration-500' />
       </form>
     </section>
   )

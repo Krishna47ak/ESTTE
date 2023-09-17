@@ -1,8 +1,11 @@
 import React, { useState, useRef } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
-const SignIn = ({ isAuthenticated, SignIn }) => {
+const SignIn = () => {
     const history = useNavigate()
+    const dispatch = useDispatch();
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
 
     const [loading, setLoading] = useState(false)
     const [formData, setFormData] = useState({
@@ -21,9 +24,7 @@ const SignIn = ({ isAuthenticated, SignIn }) => {
         console.log(formData);
     }
 
-    // if (isAuthenticated) {
-    //   return <Navigate to="/" />
-    // }
+    if (isAuthenticated) return <Navigate to="/" />
 
     return (
         <section className="flex flex-col p-10 items-center min-h-screen">
@@ -35,7 +36,7 @@ const SignIn = ({ isAuthenticated, SignIn }) => {
 
                 <input name='email' value={email} onChange={onChange} type="email" placeholder='Email' className='pr-5 pl-5 py-2 rounded-2xl w-full' required />
                 <input name='password' value={password} onChange={onChange} type="password" placeholder='Password' className='pr-5 pl-5 py-2 rounded-2xl w-full' required minLength={8} />
-                
+
                 <p className='text-gray-700'>Don't have an account?<span><Link className='text-blue-400' to="/signup"> Register</Link></span></p>
                 <input type='submit' className='btn btn-primary bg-[#340E62] text-white py-2 mt-5 rounded-lg active:scale-95 duration-500' />
             </form>

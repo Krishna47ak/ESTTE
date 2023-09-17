@@ -1,4 +1,4 @@
-import React from 'react'
+import { useEffect } from 'react'
 import { BsThreeDots, BsArrowUpRight } from 'react-icons/bs'
 import { BiPlus, BiSolidStar } from 'react-icons/bi'
 import { HiLocationMarker } from 'react-icons/hi'
@@ -11,10 +11,27 @@ import InquiryCard from '../components/InquiryCard'
 import ReviewCard from '../components/ReviewCard'
 import MemberCard from '../components/MemberCard'
 import ServiceCard from '../components/ServiceCard'
+import { fetchUser } from '../store/actions/auth'
+import { useDispatch, useSelector } from 'react-redux'
+import { Navigate } from 'react-router-dom'
 
 const ServicingAreas = ["Noida Sector 57", "Noida Sector 100", "Golf Course", "Noida Electronic City", "Botanical Garden", "Noida Extension", "Noida Sector 74", "Indraprastha", "New Ashok Nagar", "Vrindavan Colony"];
 
 const Home = () => {
+
+  const dispatch = useDispatch();
+  const auth = useSelector(state => state.auth)
+  const user = auth?.user
+
+  const sale = user?.properties?.filter((property) => property?.category === 'sale');
+  const rent = user?.properties?.filter((property) => property?.category === 'rent');
+
+  useEffect(() => {
+    dispatch(fetchUser())
+  }, [])
+
+  if (!auth.isAuthenticated) return <Navigate to="/signup" />
+
   return (
     <div className='p-10' >
       <div className='flex space-x-5 ' >
@@ -22,7 +39,7 @@ const Home = () => {
           <div className='border border-[#C0C0C0] rounded-xl w-full overflow-hidden' >
             <div className='relative' >
               <img className='w-full object-cover h-40' src={require("../assets/images/coverImage.jpg")} />
-              <img className='absolute -bottom-[50%] left-6 h-32' src={require("../assets/images/profileImage.png")} />
+              <img className='absolute -bottom-[50%] left-6 h-32' src={user?.img} />
               <div className='absolute right-10 -bottom-16 flex space-x-5' >
                 <div className='font-semibold border-2 border-[#959595] px-3 rounded-lg flex items-center cursor-pointer' >
                   <BsThreeDots className='text-3xl text-[#959595]' />
@@ -37,8 +54,8 @@ const Home = () => {
               </div>
             </div>
             <div className='pt-24 px-5 pb-5' >
-              <p className='text-2xl font-bold' >Owner/Customer</p>
-              <p className='text-lg font-semibold' >Property Dealer</p>
+              <p className='text-2xl font-bold first-letter:uppercase' >{user?.status}</p>
+              <p className='text-lg font-semibold' >{user?.designation}</p>
               <div className='flex space-x-8 text-lg text-[#919191] font-semibold' >
                 <p>1K+ Followers</p>
                 <p>1.6K+ Contacts</p>
@@ -56,9 +73,8 @@ const Home = () => {
 
               <div>
                 <p className='text-2xl font-semibold mb-3' >About me</p>
-                <p className='text-lg font-semibold' >Team Leader (23 years experience)</p>
-                <p>The XYZ Team is made up of the most ACTIVE local agents with the largest inventory of EXCLUSIVE LISTINGS and a proven track record
-                  of SATISFIED CLIENTS.</p>
+                <p className='text-lg font-semibold' >{user?.expertise}</p>
+                <p>{user?.description}.</p>
                 <p className='mt-3' >We look forward to assisting you with your next move.</p>
               </div>
 
@@ -71,14 +87,14 @@ const Home = () => {
                     <p className='text-lg font-semibold mb-3' >Residence</p>
                     <div className='flex space-x-2 items-center' >
                       <HiLocationMarker className='text-[#340E62]' />
-                      <p>Mumbai, Maharashtra, India</p>
+                      <p>{user?.address}</p>
                     </div>
                   </div>
                   <div>
                     <p className='text-lg font-semibold mb-3' >Native</p>
                     <div className='flex space-x-2 items-center' >
                       <HiLocationMarker className='text-[#340E62]' />
-                      <p>Mumbai, Maharashtra, India</p>
+                      <p>{user?.address}</p>
                     </div>
                   </div>
                 </div>
@@ -135,14 +151,14 @@ const Home = () => {
               <p className='text-2xl font-semibold mb-5' >Location</p>
               <div className='flex space-x-2 items-center' >
                 <HiLocationMarker className='text-[#340E62]' />
-                <p>Mumbai, Maharashtra, India</p>
+                <p>{user?.address}</p>
               </div>
             </div>
             <div>
               <p className='text-2xl font-semibold my-5' >Email</p>
               <div className='flex space-x-2 items-center' >
                 <img src={require("../assets/images/email.png")} className='h-3' />
-                <p>ownerprop@gmail.com</p>
+                <p>{user?.email}</p>
                 <BsArrowUpRight className='text-sm' />
               </div>
             </div>
@@ -150,7 +166,7 @@ const Home = () => {
               <p className='text-2xl font-semibold my-5' >Website</p>
               <div className='flex space-x-2 items-center' >
                 <img src={require("../assets/images/website.png")} className='h-3' />
-                <p>www.myproperty.com</p>
+                <p>{user?.website}</p>
                 <BsArrowUpRight className='text-sm' />
               </div>
             </div>
@@ -188,7 +204,7 @@ const Home = () => {
         <div className='flex justify-end space-x-5' >
           <div className='relative select-none' >
             <div className='absolute text-xs left-3 top-4' >Filter by:</div>
-            <select className="border border-[#C0C0C0] rounded-lg py-3 outline-none font-bold text-sm pl-14 px-10 " >
+            <select defaultValue="ALL" className="border border-[#C0C0C0] rounded-lg py-3 outline-none font-bold text-sm pl-14 px-10 " >
               <option value="ALL" >All</option>
               <option value="HIGH" >High</option>
               <option value="LOW" >Low</option>
@@ -196,9 +212,9 @@ const Home = () => {
           </div>
           <div className='relative select-none' >
             <div className='absolute text-xs left-3 top-4' >Sorted by:</div>
-            <select className="border border-[#C0C0C0] rounded-lg py-3 outline-none font-bold text-sm pl-16 px-8" >
+            <select defaultValue="NEW" className="border border-[#C0C0C0] rounded-lg py-3 outline-none font-bold text-sm pl-16 px-8" >
               <option value="ALL" >All</option>
-              <option value="NEW" selected>Newest</option>
+              <option value="NEW" >Newest</option>
               <option value="OLD" >Oldest</option>
             </select>
           </div>

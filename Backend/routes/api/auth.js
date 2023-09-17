@@ -68,6 +68,8 @@ router.post('/signup', [
     check('mobile', 'Please include valid mobile number').not().isEmpty(),
     check('website', 'Website is required').not().isEmpty(),
     check('status', 'Status is required').not().isEmpty(),
+    check('designation', 'Designation is required').not().isEmpty(),
+    check('expertise', 'Expertise is required').not().isEmpty(),
     check('address', 'Please include valid Address').not().isEmpty(),
     check('description', 'description is required').not().isEmpty(),
     check('password', 'Please enter password with 8 or more characters').isLength({ min: 8 })
@@ -78,7 +80,7 @@ router.post('/signup', [
             return res.status(400).json({ errors: errors.array() })
         }
 
-        const { img, name, email, mobile, website, status, address, expertise, description, password } = req.body
+        const { img, name, email, mobile, website, status, designation, address, expertise, description, password } = req.body
 
         try {
             let user = await User.findOne({ email })
@@ -94,6 +96,7 @@ router.post('/signup', [
                 mobile,
                 website,
                 status,
+                designation,
                 address,
                 expertise,
                 description,

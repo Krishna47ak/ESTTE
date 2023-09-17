@@ -49,7 +49,7 @@ const SignUp = () => {
 
   const onSubmit = e => {
     e.preventDefault()
-    img?.length == 0 ? setErrorImg(true) : setErrorImg(false)
+    img?.length === 0 ? setErrorImg(true) : setErrorImg(false)
     password !== password2 ? setErrorPassword(true) : setErrorPassword(false)
     if (errorPassword || errorImg) {
       console.error("Please check you password or Image");

@@ -45,7 +45,7 @@ const ListProperty = () => {
         e.preventDefault()
         img?.length === 0 ? setErrorImg(true) : setErrorImg(false)
 
-        if (!errorImg) dispatch(listProperty(formData, history))
+        if (!errorImg) return dispatch(listProperty(formData, history))
         setLoading(true)
     }
 
@@ -79,7 +79,7 @@ const ListProperty = () => {
                     <select className='rounded-2xl h-11 px-4 w-40 mr-2 bg-white outline-none' value={category} onChange={onChange} name="category" required>
                         <option value="">Category</option>
                         <option value="sale">Sale</option>
-                        <option value="rent">rent</option>
+                        <option value="rent">Rent</option>
                     </select>
                 </div>
                 <div>

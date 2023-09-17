@@ -1,11 +1,18 @@
-import React from 'react'
+import moment from "moment/moment"
+import { dateDifference } from "../utils/helper";
 
 const PropertyCard = ({ data }) => {
+    var current = new Date();
+    var createdDate = new Date(moment(data?.date).format("YYYY-MM-DD"));
+
+    const dateDiff = dateDifference(current, createdDate);
+    const dayCreatedMsg = dateDiff === 0 ? 'Today' : dateDiff === 1 ? 'Yesterday' : (dateDiff + " Days ago")
+
     return (
         <div className='w-80 mb-5 rounded-lg border border-[#C0C0C0] hover:border-[#340E62] hover:shadow-xl overflow-hidden' >
             <div className='relative' >
                 <label className='absolute text-white font-semibold text-sm bg-[#E36957] px-7 py-2' >{data?.category === 'rent' ? "RENT" : "SALE"}</label>
-                <label className='absolute right-4 bottom-4 text-black font-medium text-xs bg-white rounded-lg px-2 py-1' >5Days ago</label>
+                <label className='absolute right-4 bottom-4 text-black font-medium text-xs bg-white rounded-lg px-2 py-1' >{dayCreatedMsg}</label>
                 <div className='absolute bg-white p-2 rounded-full right-4 top-4 cursor-pointer' >
                     <img className='h-3' src={require("../assets/images/pin.png")} alt='pin' />
                 </div>

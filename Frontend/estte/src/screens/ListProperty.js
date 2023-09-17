@@ -1,15 +1,17 @@
 import { useState, useRef } from "react"
 import { BiSolidPencil } from "react-icons/bi";
-import PropertyImg from "../assets/images/property.png";
 import { useDispatch } from "react-redux";
 import { listProperty } from "../store/actions/property";
 import { useNavigate } from "react-router-dom";
+import PropertyImg from "../assets/images/property.png";
+import Spinner from "../components/Spinner";
 
 const ListProperty = () => {
     const inputRef = useRef("");
     const history = useNavigate()
     const dispatch = useDispatch();
 
+    const [loading, setLoading] = useState(false)
     const [errorImg, setErrorImg] = useState(false);
     const [formData, setFormData] = useState({
         img: '',
@@ -42,9 +44,10 @@ const ListProperty = () => {
         img?.length == 0 ? setErrorImg(true) : setErrorImg(false)
 
         if (!errorImg) dispatch(listProperty(formData, history))
+        setLoading(true)
     }
 
-    return (
+    return loading ? <Spinner /> : (
         <section className="flex flex-col  items-center p-5 min-h-screen ">
             <p className="text-black text-xl">
                 List Your Property

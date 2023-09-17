@@ -1,9 +1,10 @@
-import React, { useState, useRef } from 'react'
+import { useState, useRef } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { BiSolidPencil } from "react-icons/bi";
-import ProfileImg from "../assets/images/profileDefaultIcon.jpg";
 import { signup } from '../store/actions/auth';
+import ProfileImg from "../assets/images/profileDefaultIcon.jpg";
+import Spinner from '../components/Spinner';
 
 const SignUp = () => {
   const history = useNavigate()
@@ -51,7 +52,7 @@ const SignUp = () => {
     img?.length == 0 ? setErrorImg(true) : setErrorImg(false)
     password !== password2 ? setErrorPassword(true) : setErrorPassword(false)
     if (errorPassword || errorImg) {
-      console.error("Please check you inputs");
+      console.error("Please check you password or Image");
     } else {
       setLoading(true)
       dispatch(signup(formData, history))
@@ -61,7 +62,7 @@ const SignUp = () => {
   if (isAuthenticated) return <Navigate to="/" />
 
 
-  return (
+  return loading ? <Spinner /> : (
     <section className="flex flex-col p-10 items-center min-h-screen">
       <h1 className='text-black text-3xl'>Sign Up</h1>
       <p className="text-black text-xl my-3 ">

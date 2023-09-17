@@ -1,6 +1,8 @@
-import React, { useState, useRef } from 'react'
+import { useState } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { login } from '../store/actions/auth'
+import Spinner from '../components/Spinner'
 
 const SignIn = () => {
     const history = useNavigate()
@@ -21,12 +23,12 @@ const SignIn = () => {
         e.preventDefault()
 
         setLoading(true)
-        console.log(formData);
+        dispatch(login(formData, history))
     }
 
     if (isAuthenticated) return <Navigate to="/" />
 
-    return (
+    return loading ? <Spinner /> : (
         <section className="flex flex-col p-10 items-center min-h-screen">
             <h1 className='text-black text-3xl'>Sign In</h1>
             <p className="text-black text-xl my-3 ">

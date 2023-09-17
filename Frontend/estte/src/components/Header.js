@@ -3,8 +3,11 @@ import { BiPlus, BiSearch } from 'react-icons/bi'
 import { MdLocationSearching } from 'react-icons/md'
 import { HiLocationMarker } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const Header = () => {
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+    
     return (
         <div className='flex justify-between py-2 px-10 shadow-lg items-center select-none' >
             <Link to="/" className='text-2xl' >ESTTE</Link>
@@ -29,9 +32,11 @@ const Header = () => {
                 <Link className='bg-[#340E62] text-white text-sm font-semibold px-6 py-2 rounded-lg hover:scale-105' >
                     <p>JOIN</p>
                 </Link>
-                <Link to="/signup" className='bg-[#340E62] text-white text-sm font-semibold px-6 py-2 rounded-lg hover:scale-105' >
-                    <p>SIGN UP</p>
-                </Link>
+                {!isAuthenticated && (
+                    <Link to="/signup" className='bg-[#340E62] text-white text-sm font-semibold px-6 py-2 rounded-lg hover:scale-105' >
+                        <p>SIGN UP</p>
+                    </Link>
+                )}
                 <div>
                     <img className='h-4 cursor-pointer hover:scale-105' src={require("../assets/images/hamburgerIcon.png")} />
                 </div>

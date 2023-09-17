@@ -11,24 +11,18 @@ import InquiryCard from '../components/InquiryCard'
 import ReviewCard from '../components/ReviewCard'
 import MemberCard from '../components/MemberCard'
 import ServiceCard from '../components/ServiceCard'
-import { fetchUser } from '../store/actions/auth'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 
 const ServicingAreas = ["Noida Sector 57", "Noida Sector 100", "Golf Course", "Noida Electronic City", "Botanical Garden", "Noida Extension", "Noida Sector 74", "Indraprastha", "New Ashok Nagar", "Vrindavan Colony"];
 
 const Home = () => {
 
-  const dispatch = useDispatch();
   const auth = useSelector(state => state.auth)
   const user = auth?.user
 
   const sale = user?.properties?.filter((property) => property?.category === 'sale');
   const rent = user?.properties?.filter((property) => property?.category === 'rent');
-
-  useEffect(() => {
-    dispatch(fetchUser())
-  }, [])
 
   if (!auth.isAuthenticated) return <Navigate to="/signup" />
 

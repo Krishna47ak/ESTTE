@@ -3,6 +3,7 @@ import Home from "./screens/Home";
 import ListProperty from "./screens/ListProperty";
 import AppLayout from "./components/AppLayout";
 import SignUp from "./screens/Signup";
+import SignIn from "./screens/Signin";
 
 const appRouter = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp />
+      },
+      {
+        path: "/signin",
+        element: <SignIn />
       },
     ]
   }

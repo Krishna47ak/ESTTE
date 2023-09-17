@@ -16,7 +16,7 @@ const ReviewCard = ({ data }) => {
                 <p className='font-semibold text-[#E36957] text-lg cursor-pointer' >Report a Problem</p>
             </div>
             <div className='flex items-center my-7' >
-                <img className='h-14 mr-3' src={require("../assets/images/profileIcon.png")} />
+                <img className='h-14 mr-3' src={require("../assets/images/profileIcon.png")} alt="profile" />
                 <div>
                     <p className='text-lg font-semibold' >Mr. {data?.name}</p>
                     <p className='text-[#E36957]' >+91 {data?.mobile}</p>

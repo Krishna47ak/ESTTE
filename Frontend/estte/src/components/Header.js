@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 
 const Header = () => {
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
-    
+
     return (
         <div className='flex justify-between py-2 px-10 shadow-lg items-center select-none' >
             <Link to="/" className='text-2xl' >ESTTE</Link>
@@ -25,20 +25,23 @@ const Header = () => {
                         <BiSearch className='text-xl text-white cursor-pointer' />
                     </div>
                 </div>
-                <Link to="/list-property" className='flex items-center px-2 py-2 text-sm text-[#340E62] hover:text-white hover:bg-[#340E62] font-semibold border border-[#E2E2E2] rounded-lg' >
-                    <BiPlus className='pr-2 w-fit text-xl' />
-                    <p>POST NEW</p>
-                </Link>
-                <Link className='bg-[#340E62] text-white text-sm font-semibold px-6 py-2 rounded-lg hover:scale-105' >
-                    <p>JOIN</p>
-                </Link>
-                {!isAuthenticated && (
+                {isAuthenticated ? (
+                    <>
+                        <Link to="/list-property" className='flex items-center px-2 pr-3 py-2 text-sm text-[#340E62] hover:text-white hover:bg-[#340E62] font-semibold border border-[#E2E2E2] rounded-lg' >
+                            <BiPlus className='pr-1 w-fit text-xl' />
+                            <p>POST NEW</p>
+                        </Link>
+                        <Link className='bg-[#340E62] text-white text-sm font-semibold px-6 py-2 rounded-lg hover:scale-105' >
+                            <p>JOIN</p>
+                        </Link>
+                    </>
+                ) : (
                     <Link to="/signup" className='bg-[#340E62] text-white text-sm font-semibold px-6 py-2 rounded-lg hover:scale-105' >
                         <p>SIGN UP</p>
                     </Link>
                 )}
                 <div>
-                    <img className='h-4 cursor-pointer hover:scale-105' src={require("../assets/images/hamburgerIcon.png")} />
+                    <img className='h-4 cursor-pointer hover:scale-105' src={require("../assets/images/hamburgerIcon.png")} alt='menu' />
                 </div>
             </div>
         </div>

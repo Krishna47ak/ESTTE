@@ -32,8 +32,8 @@ const Home = () => {
         <div>
           <div className='border border-[#C0C0C0] rounded-xl w-full overflow-hidden' >
             <div className='relative' >
-              <img className='w-full object-cover h-40' src={require("../assets/images/coverImage.jpg")} />
-              <img className='absolute -bottom-[50%] left-6 h-32' src={user?.img} />
+              <img className='w-full object-cover h-40' src={require("../assets/images/coverImage.jpg")} alt="cover image" />
+              <img className='absolute -bottom-[50%] left-6 h-32' src={user?.img} alt="profile image" />
               <div className='absolute right-10 -bottom-16 flex space-x-5' >
                 <div className='font-semibold border-2 border-[#959595] px-3 rounded-lg flex items-center cursor-pointer' >
                   <BsThreeDots className='text-3xl text-[#959595]' />
@@ -151,7 +151,7 @@ const Home = () => {
             <div>
               <p className='text-2xl font-semibold my-5' >Email</p>
               <div className='flex space-x-2 items-center' >
-                <img src={require("../assets/images/email.png")} className='h-3' />
+                <img src={require("../assets/images/email.png")} className='h-3' alt='mail' />
                 <p>{user?.email}</p>
                 <BsArrowUpRight className='text-sm' />
               </div>
@@ -159,7 +159,7 @@ const Home = () => {
             <div>
               <p className='text-2xl font-semibold my-5' >Website</p>
               <div className='flex space-x-2 items-center' >
-                <img src={require("../assets/images/website.png")} className='h-3' />
+                <img src={require("../assets/images/website.png")} className='h-3' alt='website' />
                 <p>{user?.website}</p>
                 <BsArrowUpRight className='text-sm' />
               </div>

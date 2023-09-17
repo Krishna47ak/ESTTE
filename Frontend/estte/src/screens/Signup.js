@@ -23,7 +23,7 @@ const SignUp = () => {
     website: '',
     status: '',
     designation: '',
-    address: [],
+    address: '',
     expertise: '',
     description: '',
     password: '',

@@ -2,14 +2,16 @@ import { useState, useRef } from "react"
 import { BiSolidPencil } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { listProperty } from "../store/actions/property";
-import { useNavigate } from "react-router-dom";
-import PropertyImg from "../assets/images/property.png";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux'
+import PropertyImg from "../assets/images/property.jpg";
 import Spinner from "../components/Spinner";
 
 const ListProperty = () => {
     const inputRef = useRef("");
     const history = useNavigate()
     const dispatch = useDispatch();
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
 
     const [loading, setLoading] = useState(false)
     const [errorImg, setErrorImg] = useState(false);
@@ -41,11 +43,13 @@ const ListProperty = () => {
 
     const onSubmit = e => {
         e.preventDefault()
-        img?.length == 0 ? setErrorImg(true) : setErrorImg(false)
+        img?.length === 0 ? setErrorImg(true) : setErrorImg(false)
 
         if (!errorImg) dispatch(listProperty(formData, history))
         setLoading(true)
     }
+
+    if (!isAuthenticated) return <Navigate to="/" />
 
     return loading ? <Spinner /> : (
         <section className="flex flex-col  items-center p-5 min-h-screen ">
@@ -56,7 +60,7 @@ const ListProperty = () => {
                 <div className="relative w-48 mx-auto" onClick={handleImageClick}>
                     <img
                         src={img ? img : PropertyImg}
-                        alt="dp"
+                        alt="property"
                         className="h-44 w-44 rounded-full mx-auto overflow-hidden object-cover border-2 "
                     />
                     <div className="absolute right-0 bottom-2 bg-white rounded-full p-1 border-2">

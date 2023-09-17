@@ -5,7 +5,7 @@ const InquiryCard = ({ data }) => {
         <div className='w-[28rem] rounded-lg mb-5 border border-[#C0C0C0] p-5 hover:shadow-xl overflow-hidden' >
             <div className='flex justify-between' >
                 <div className='flex items-center' >
-                    <img className='h-14 mr-3' src={require("../assets/images/profileIcon.png")} />
+                    <img className='h-14 mr-3' src={require("../assets/images/profileIcon.png")} alt='profile' />
                     <div>
                         <p className='text-lg font-semibold' >Mr. {data?.name}</p>
                         <p className='text-[#E36957]' >+91 {data?.mobile}</p>

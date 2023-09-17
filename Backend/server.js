@@ -15,6 +15,10 @@ app.use(bodyParser.json({limit: "50mb"}));
 app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 app.use(express.json({ extended: false }))
 
+// Define Routes
+app.use('/api/auth', require('./routes/api/auth'))
+app.use('/api/property', require('./routes/api/property'))
+
 app.get('/', (req, res) => res.send('Api Running'))
 
 const PORT = process.env.PORT || 4000

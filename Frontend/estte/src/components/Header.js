@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const Header = () => {
     return (
         <div className='flex justify-between py-2 px-10 shadow-lg items-center select-none' >
-            <p className='text-2xl' >ESTTE</p>
+            <Link to="/" className='text-2xl' >ESTTE</Link>
             <div className='flex space-x-4 items-center' >
                 <div className='flex items-center' >
                     <div className='flex items-center bg-[#EDF2F7] border-y-2 border-s-2 text-[#340E62] border-[#E2E2E2] py-1 rounded-s-lg' >
@@ -22,7 +22,7 @@ const Header = () => {
                         <BiSearch className='text-xl text-white cursor-pointer' />
                     </div>
                 </div>
-                <Link className='flex items-center px-2 py-2 text-sm text-[#340E62] hover:text-white hover:bg-[#340E62] font-semibold border border-[#E2E2E2] rounded-lg' >
+                <Link to="/list-property" className='flex items-center px-2 py-2 text-sm text-[#340E62] hover:text-white hover:bg-[#340E62] font-semibold border border-[#E2E2E2] rounded-lg' >
                     <BiPlus className='pr-2 w-fit text-xl' />
                     <p>POST NEW</p>
                 </Link>
